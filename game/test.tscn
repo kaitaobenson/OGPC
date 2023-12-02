@@ -12,14 +12,13 @@
 
 [node name="mainScene" type="Node"]
 
-[node name="test" type="Area2D" parent="."]
-position = Vector2(200, 200)
+[node name="linearProjectile2" type="Area2D" parent="."]
 script = ExtResource("1_wv5ko")
 
-[node name="Sprite2D" type="Sprite2D" parent="test"]
+[node name="Sprite2D" type="Sprite2D" parent="linearProjectile2"]
 texture = ExtResource("2_bixa7")
 
-[node name="hitbox" type="CollisionShape2D" parent="test"]
+[node name="hitbox" type="CollisionShape2D" parent="linearProjectile2"]
 shape = SubResource("RectangleShape2D_foowx")
 
 [node name="commonObjLibrary" type="Node" parent="."]
@@ -34,17 +33,17 @@ texture = ExtResource("2_bixa7")
 [node name="hitbox" type="CollisionShape2D" parent="commonObjLibrary/linearProjectile"]
 shape = SubResource("RectangleShape2D_foowx")
 
-[node name="coolMethods" type="Node" parent="commonObjLibrary"]
-script = ExtResource("4_w0asu")
-
 [node name="WALL" type="Area2D" parent="commonObjLibrary"]
 position = Vector2(439, 435)
 script = ExtResource("5_4w2nv")
 
 [node name="Sprite2D" type="Sprite2D" parent="commonObjLibrary/WALL"]
-position = Vector2(3.5, 0)
-scale = Vector2(0.929688, 1)
+position = Vector2(-333.25, -13)
+scale = Vector2(8.01953, 1)
 texture = ExtResource("2_bixa7")
 
 [node name="hitbox" type="CollisionShape2D" parent="commonObjLibrary/WALL"]
 shape = SubResource("RectangleShape2D_eiet5")
+
+[node name="coolMethods" type="Node" parent="commonObjLibrary"]
+script = ExtResource("4_w0asu")
