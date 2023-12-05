@@ -10,7 +10,7 @@ func texture(naim:String):
 	return le_texture
 	#do you need a hitbox, but dont want to tediously get the sizing right yourself? well then generateHitbox is for you! pass it the object and it will make the hitbox size whatever the sprite size is
 func generateHitbox(obbect):
-	obbect.get_node("hitbox").shape.extents = obbect.get_node("Sprite2D").get_rect().size*obbect.get_node("Sprite2D").scale/2
+	obbect.get_node("hitbox").shape.extents = (obbect.get_node("Sprite2D").get_rect().size*obbect.get_node("Sprite2D").scale)/2
 	obbect.get_node("hitbox").position.x = 0
 	obbect.get_node("hitbox").position.y = 0
 func IsParentLib(obbect):

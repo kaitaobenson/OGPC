@@ -11,6 +11,7 @@ extends Area2D
 @onready var despawnCounter = 0
 @onready var hitamount = 0
 @onready var hitlimit = 0
+@onready var currentTouchedObjs
 #the NotSliding variable prevents the bounce efect being initiated multiple times because the projectile doesnt escape the hitbox it hit on the frame in which it happened
 @onready var NotSliding = true
 func fire(angle,pos,speedIn,despawnpime,bounceAmount):
@@ -24,10 +25,14 @@ func fire(angle,pos,speedIn,despawnpime,bounceAmount):
 	fireNow = true
 	hitlimit = bounceAmount
 	despawnTime = despawnpime
-#func get_collision_angle():
+func get_collision_angle():
+	var objectAngles = {}
+	objectAngles = get_overlapping_bodies()+get_overlapping_areas()
+	#this node is for bullets. if its touching multiple things then use something different
+	return objectAngles[1]
 func _ready():
-	#despawn time is in seconds, i think?
-	fire(40,Vector2(0,0),500,6,1)
+	#despawn time is in seconds
+	fire(40,Vector2(0,0),500,9,1)
 	if(!isInLib):
 		self.visible = false
 		self.get_node("hitbox").set_deferred("disabled", true)
@@ -46,19 +51,13 @@ func _process(delta):
 						self.rotation_degrees = -self.rotation_degrees
 						#speed = -speed
 						NotSliding = false
-				print("reached")
 				self.position.x += speed*delta
-				self.position.y += tan(deg_to_rad(self.rotation_degrees))*speed*delta
+				self.position.y += tan(self.rotation)*speed*delta
 				#debug code
-				if(!NotSliding):
-					print(self.position.x)
-					print(self.position.y)
 				if(!self.has_overlapping_areas() or self.has_overlapping_bodies()):
 					NotSliding = true		
 				firetime = Time.get_unix_time_from_system()
 			else:
 					despawnCounter = Time.get_unix_time_from_system()-firetime
-					print(despawnTime)
-					print(despawnCounter)
 					if(despawnCounter>=despawnTime):
 						self.queue_free()
