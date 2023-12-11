@@ -46,7 +46,6 @@ func _process(delta):
 					if(self.has_overlapping_areas() or self.has_overlapping_bodies()):
 						print(self.position.x)
 						print(self.position.y)
-						print("thingy got hit!")
 						hitamount = hitamount+1
 						self.rotation_degrees = -self.rotation_degrees
 						#speed = -speed

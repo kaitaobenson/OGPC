@@ -1,30 +1,14 @@
-[gd_scene load_steps=11 format=3 uid="uid://da71rnvdi7nh7"]
+[gd_scene load_steps=8 format=3 uid="uid://da71rnvdi7nh7"]
 
 [ext_resource type="Script" path="res://LinearProjectile.gd" id="1_wv5ko"]
 [ext_resource type="Texture2D" uid="uid://dy8fsivj6gbu7" path="res://assets/textures/icon.svg" id="2_bixa7"]
 [ext_resource type="Script" path="res://librarian.gd" id="3_s4l11"]
 [ext_resource type="Script" path="res://coolMethods.gd" id="4_w0asu"]
 [ext_resource type="Script" path="res://wallHandler.gd" id="5_4w2nv"]
-[ext_resource type="Script" path="res://controlHandler.gd" id="6_l56xj"]
-[ext_resource type="Script" path="res://Player.gd" id="6_sj4y1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_foowx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eiet5"]
-
-[sub_resource type="GDScript" id="GDScript_4eu0a"]
-script/source = "extends AnimatedSprite2D
-
-var inventory = {}
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-"
 
 [node name="mainScene" type="Node"]
 
@@ -64,13 +48,4 @@ shape = SubResource("RectangleShape2D_eiet5")
 [node name="coolMethods" type="Node" parent="commonObjLibrary"]
 script = ExtResource("4_w0asu")
 
-[node name="Player" type="CharacterBody2D" parent="."]
-script = ExtResource("6_sj4y1")
-
-[node name="playerSprite" type="AnimatedSprite2D" parent="Player"]
-script = SubResource("GDScript_4eu0a")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-
-[node name="controlHandler" type="Node" parent="Player"]
-script = ExtResource("6_l56xj")
+[node name="itemStorage" type="Node" parent="commonObjLibrary"]
